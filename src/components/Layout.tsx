@@ -32,6 +32,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="grain-overlay">
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
+      
       {/* Navigation */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
@@ -80,8 +85,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Mobile toggle */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden p-2 text-ink"
-              aria-label="Menu"
+              className="lg:hidden p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-ink rounded-lg hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-brand"
+              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileOpen}
             >
               {isMobileOpen ? <IconX width={22} height={22} /> : <IconMenu width={22} height={22} />}
             </button>
@@ -96,9 +102,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-white pt-20 lg:hidden"
+            className="fixed inset-0 z-40 bg-white pt-20 lg:hidden overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
           >
-            <nav className="flex flex-col items-center gap-6 p-8">
+            <nav className="flex flex-col items-center gap-6 p-8 pb-20">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.path}
@@ -108,7 +117,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 >
                   <Link
                     to={link.path}
-                    className={`text-2xl font-display font-semibold ${
+                    className={`text-2xl font-display font-semibold min-h-[44px] flex items-center ${
                       location.pathname === link.path ? 'text-brand' : 'text-ink'
                     }`}
                   >
@@ -124,7 +133,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               >
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white rounded-full text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-6 py-3 min-h-[44px] bg-brand text-white rounded-full text-sm font-medium"
                 >
                   Book a Call
                   <IconArrowRight width={14} height={14} />
@@ -136,7 +145,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main className="min-h-screen">{children}</main>
+      <main id="main-content" className="min-h-screen" tabIndex={-1}>{children}</main>
 
       {/* Footer */}
       <footer className="border-t border-border bg-surface">
@@ -177,13 +186,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-ink mb-4">Connect</h4>
+              <h4 className="text-sm font-semibold text-ink mb-4">Get in touch</h4>
               <ul className="space-y-2.5">
-                {['Twitter', 'LinkedIn', 'Instagram', 'Dribbble'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-sm text-ink-muted hover:text-brand transition-colors">{item}</a>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/contact" className="text-sm text-ink-muted hover:text-brand transition-colors">Contact form</Link>
+                </li>
+                <li>
+                  <Link to="/work" className="text-sm text-ink-muted hover:text-brand transition-colors">View our work</Link>
+                </li>
+                <li>
+                  <Link to="/process" className="text-sm text-ink-muted hover:text-brand transition-colors">How we work</Link>
+                </li>
               </ul>
             </div>
           </div>

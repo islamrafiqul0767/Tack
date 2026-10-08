@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import PageTransition, { Reveal } from '../components/PageTransition';
-import { IconSend, IconMail2, IconPhone, IconMapPin, IconCheck } from '../components/Icons';
+import { IconSend, IconCheck, IconAlertCircle } from '../components/Icons';
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     business: '',
@@ -12,10 +11,25 @@ export default function Contact() {
     automate: '',
     details: '',
   });
+  const [submitState, setSubmitState] = useState<'idle' | 'submitting' | 'unavailable'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    // No backend is currently configured for this form.
+    // Instead of faking success, we inform the user clearly.
+    setSubmitState('unavailable');
+  };
+
+  const resetForm = () => {
+    setSubmitState('idle');
+    setFormData({
+      name: '',
+      business: '',
+      email: '',
+      website: '',
+      automate: '',
+      details: '',
+    });
   };
 
   return (
@@ -26,11 +40,11 @@ export default function Contact() {
           <Reveal>
             <div className="max-w-3xl">
               <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Contact</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                Let's <span className="text-gradient-red">automate</span> your business.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+                Let's discuss <span className="text-gradient-red">your automation</span> needs.
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
-                Tell us about your business and what you'd like to automate. We'll respond within 24 hours.
+              <p className="text-lg text-ink-muted leading-relaxed">
+                Share a few details about your business and what you'd like to automate. We'll review your inquiry and reach out to schedule a discovery conversation.
               </p>
             </div>
           </Reveal>
@@ -44,32 +58,56 @@ export default function Contact() {
             {/* Form */}
             <div className="lg:col-span-3">
               <Reveal>
-                {submitted ? (
-                  <div className="p-12 rounded-2xl bg-green-50 border-2 border-green-200 text-center">
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                      <IconCheck width={32} height={32} className="text-green-600" />
+                {submitState === 'unavailable' ? (
+                  <div className="p-8 sm:p-12 rounded-2xl bg-surface border border-border" role="status" aria-live="polite">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0">
+                        <IconAlertCircle width={24} height={24} className="text-brand" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-display font-bold text-ink mb-2">Submission not yet available</h3>
+                        <p className="text-ink-muted leading-relaxed">
+                          This form is not currently connected to a backend. To send an inquiry, please reach out through the contact details listed alongside this form, or check back after the form integration has been configured.
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-ink mb-3">Request Sent!</h3>
-                    <p className="text-ink-muted">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    <button
+                      type="button"
+                      onClick={resetForm}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium text-ink hover:border-brand hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand/20"
+                    >
+                      Edit your message
+                    </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate={false}>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-ink mb-2">Name *</label>
+                        <label htmlFor="contact-name" className="block text-sm font-semibold text-ink mb-2">
+                          Name <span className="text-brand" aria-hidden="true">*</span>
+                        </label>
                         <input
+                          id="contact-name"
+                          name="name"
                           type="text"
+                          autoComplete="name"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full px-4 py-3.5 rounded-xl bg-white border border-border text-ink placeholder:text-ink-faint focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all"
                           placeholder="Your name"
                           required
+                          minLength={2}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-ink mb-2">Business Name</label>
+                        <label htmlFor="contact-business" className="block text-sm font-semibold text-ink mb-2">
+                          Business Name
+                        </label>
                         <input
+                          id="contact-business"
+                          name="business"
                           type="text"
+                          autoComplete="organization"
                           value={formData.business}
                           onChange={(e) => setFormData({ ...formData, business: e.target.value })}
                           className="w-full px-4 py-3.5 rounded-xl bg-white border border-border text-ink placeholder:text-ink-faint focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all"
@@ -80,9 +118,14 @@ export default function Contact() {
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-ink mb-2">Email *</label>
+                        <label htmlFor="contact-email" className="block text-sm font-semibold text-ink mb-2">
+                          Email <span className="text-brand" aria-hidden="true">*</span>
+                        </label>
                         <input
+                          id="contact-email"
+                          name="email"
                           type="email"
+                          autoComplete="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="w-full px-4 py-3.5 rounded-xl bg-white border border-border text-ink placeholder:text-ink-faint focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all"
@@ -91,8 +134,12 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-ink mb-2">Website</label>
+                        <label htmlFor="contact-website" className="block text-sm font-semibold text-ink mb-2">
+                          Website
+                        </label>
                         <input
+                          id="contact-website"
+                          name="website"
                           type="url"
                           value={formData.website}
                           onChange={(e) => setFormData({ ...formData, website: e.target.value })}
@@ -103,20 +150,29 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-ink mb-2">What do you want to automate? *</label>
+                      <label htmlFor="contact-automate" className="block text-sm font-semibold text-ink mb-2">
+                        What do you want to automate? <span className="text-brand" aria-hidden="true">*</span>
+                      </label>
                       <input
+                        id="contact-automate"
+                        name="automate"
                         type="text"
                         value={formData.automate}
                         onChange={(e) => setFormData({ ...formData, automate: e.target.value })}
                         className="w-full px-4 py-3.5 rounded-xl bg-white border border-border text-ink placeholder:text-ink-faint focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all"
                         placeholder="e.g., Lead management, customer onboarding, email follow-ups..."
                         required
+                        minLength={3}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-ink mb-2">Additional Details</label>
+                      <label htmlFor="contact-details" className="block text-sm font-semibold text-ink mb-2">
+                        Additional Details
+                      </label>
                       <textarea
+                        id="contact-details"
+                        name="details"
                         value={formData.details}
                         onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                         rows={5}
@@ -125,11 +181,16 @@ export default function Contact() {
                       />
                     </div>
 
+                    <p className="text-xs text-ink-faint leading-relaxed">
+                      By submitting, you agree to be contacted about your inquiry. No data is stored until a backend integration is configured.
+                    </p>
+
                     <button
                       type="submit"
-                      className="group inline-flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full text-base font-semibold hover:bg-brand-dark transition-all duration-300 shadow-lg shadow-brand/20"
+                      disabled={submitState === 'submitting'}
+                      className="group inline-flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full text-base font-semibold hover:bg-brand-dark transition-all duration-300 shadow-lg shadow-brand/20 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Request Automation Consultation
+                      {submitState === 'submitting' ? 'Sending...' : 'Request Automation Consultation'}
                       <IconSend width={18} height={18} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                   </form>
@@ -140,59 +201,42 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <Reveal delay={0.2}>
-                <div className="p-8 rounded-2xl bg-surface border border-border sticky top-28">
-                  <h3 className="text-xl font-display font-bold text-ink mb-6">Contact Information</h3>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0">
-                        <IconMail2 width={20} height={20} className="text-brand" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-ink-faint uppercase tracking-wider mb-1">Email</p>
-                        <p className="text-ink font-medium">hello@vectral.ai</p>
-                      </div>
-                    </div>
+                <div className="p-8 rounded-2xl bg-surface border border-border">
+                  <h3 className="text-xl font-display font-bold text-ink mb-6">How to reach us</h3>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0">
-                        <IconPhone width={20} height={20} className="text-brand" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-ink-faint uppercase tracking-wider mb-1">Phone</p>
-                        <p className="text-ink font-medium">+1 (555) 000-0000</p>
-                      </div>
-                    </div>
+                  <p className="text-sm text-ink-muted leading-relaxed mb-6">
+                    The contact form above is not yet connected to a backend. To start a conversation, please share your inquiry details through the form and we will configure a response channel, or reach out via the method provided during your discovery call.
+                  </p>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0">
-                        <IconMapPin width={20} height={20} className="text-brand" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-ink-faint uppercase tracking-wider mb-1">Location</p>
-                        <p className="text-ink font-medium">Remote — Worldwide</p>
-                      </div>
-                    </div>
+                  <div className="p-4 rounded-xl bg-brand-50 border border-brand-100">
+                    <p className="text-xs font-bold text-brand uppercase tracking-wider mb-2">What happens next</p>
+                    <ol className="text-sm text-ink-muted leading-relaxed space-y-2 list-decimal list-inside">
+                      <li>You share details about your business and goals.</li>
+                      <li>We review your inquiry and identify potential automation opportunities.</li>
+                      <li>We schedule a discovery conversation to discuss scope and next steps.</li>
+                    </ol>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-border">
-                    <p className="text-xs font-semibold text-ink-faint uppercase tracking-wider mb-3">Follow Us</p>
-                    <div className="flex gap-2">
-                      {['Twitter', 'LinkedIn', 'Instagram'].map((social) => (
-                        <a
-                          key={social}
-                          href="#"
-                          className="px-4 py-2 rounded-lg bg-white border border-border text-sm text-ink-muted hover:border-brand hover:text-brand transition-all"
-                        >
-                          {social}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-6 p-4 rounded-xl bg-brand-50 border border-brand-100">
-                    <p className="text-xs font-bold text-brand uppercase tracking-wider mb-1">⚡ Response Time</p>
-                    <p className="text-sm text-ink-muted">We typically respond within 24 hours</p>
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <p className="text-xs font-semibold text-ink-faint uppercase tracking-wider mb-3">What we'll discuss</p>
+                    <ul className="space-y-2 text-sm text-ink-muted">
+                      <li className="flex items-start gap-2">
+                        <IconCheck width={16} height={16} className="text-brand flex-shrink-0 mt-0.5" />
+                        Your current workflows and bottlenecks
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <IconCheck width={16} height={16} className="text-brand flex-shrink-0 mt-0.5" />
+                        Opportunities for automation
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <IconCheck width={16} height={16} className="text-brand flex-shrink-0 mt-0.5" />
+                        Tools and integrations you already use
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <IconCheck width={16} height={16} className="text-brand flex-shrink-0 mt-0.5" />
+                        Rough scope, timeline, and next steps
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </Reveal>

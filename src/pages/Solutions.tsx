@@ -22,11 +22,11 @@ export default function Solutions() {
           <Reveal>
             <div className="max-w-3xl">
               <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Industries</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                Solutions for <span className="text-gradient-red">every</span> business.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+                Businesses we've <span className="text-gradient-red">worked with</span>.
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
-                Our automation systems adapt to any industry. We tailor every solution to your specific business model and workflow.
+              <p className="text-lg text-ink-muted leading-relaxed">
+                We've designed automation for businesses across many industries. Each system is tailored to the specific workflows and tools that business uses.
               </p>
             </div>
           </Reveal>
@@ -61,11 +61,11 @@ export default function Solutions() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-display font-bold text-ink mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-ink mb-4">
                 From Manual to <span className="text-gradient-red">Automated</span>
               </h2>
               <p className="text-lg text-ink-muted max-w-2xl mx-auto">
-                See the difference automation makes in a typical business process.
+                An illustrative example of how a typical lead-handling workflow can change once automated. Actual results depend on your process and tools.
               </p>
             </div>
           </Reveal>
@@ -87,8 +87,8 @@ export default function Solutions() {
                   ))}
                 </ul>
                 <div className="mt-6 pt-6 border-t border-border">
-                  <p className="text-sm text-ink-muted"><span className="font-semibold text-red-600">Time:</span> ~45 minutes</p>
-                  <p className="text-sm text-ink-muted"><span className="font-semibold text-red-600">Errors:</span> High risk</p>
+                  <p className="text-sm text-ink-muted"><span className="font-semibold text-red-600">Typical effort:</span> Tens of minutes per lead</p>
+                  <p className="text-sm text-ink-muted"><span className="font-semibold text-red-600">Risk:</span> Missed steps, inconsistent follow-up</p>
                 </div>
               </div>
             </Reveal>
@@ -101,7 +101,7 @@ export default function Solutions() {
                 </div>
                 <h3 className="text-xl font-display font-bold text-ink mb-4">Automated Process</h3>
                 <ul className="space-y-3">
-                  {['Customer submits form', 'AI qualifies lead automatically', 'CRM updated instantly', 'Personalized email sent', 'Team notified via Slack', 'Dashboard updated in real-time'].map((step, i) => (
+                  {['Customer submits form', 'Lead routed and enriched', 'CRM updated automatically', 'Personalized email sent', 'Team notified', 'Dashboard updated'].map((step, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-ink-muted">
                       <span className="w-6 h-6 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-xs font-bold text-green-600">{i + 1}</span>
                       {step}
@@ -109,8 +109,8 @@ export default function Solutions() {
                   ))}
                 </ul>
                 <div className="mt-6 pt-6 border-t border-border">
-                  <p className="text-sm text-ink-muted"><span className="font-semibold text-green-600">Time:</span> &lt; 2 seconds</p>
-                  <p className="text-sm text-ink-muted"><span className="font-semibold text-green-600">Errors:</span> Near zero</p>
+                  <p className="text-sm text-ink-muted"><span className="font-semibold text-green-600">Typical effort:</span> Seconds per lead</p>
+                  <p className="text-sm text-ink-muted"><span className="font-semibold text-green-600">Consistency:</span> Same steps every time</p>
                 </div>
               </div>
             </Reveal>
