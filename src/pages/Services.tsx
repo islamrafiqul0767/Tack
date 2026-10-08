@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import PageTransition, { Reveal, StaggerContainer, StaggerItem } from '../components/PageTransition';
 import { IconBrain, IconWorkflow, IconCRM, IconTarget, IconChat, IconCalendar, IconMail, IconSettings, IconArrowRight, IconCheck } from '../components/Icons';
 
@@ -65,17 +66,68 @@ export default function Services() {
   return (
     <PageTransition>
       {/* Header */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 opacity-5">
+          <img
+            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
-            <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Our Services</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                Automation that <span className="text-gradient-red">transforms</span> your business.
+            <div className="max-w-4xl">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-6"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-2 h-2 rounded-full bg-brand"
+                />
+                <span className="text-xs font-semibold text-brand uppercase tracking-wider">Our Services</span>
+              </motion.div>
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-ink mb-6 leading-[0.9]">
+                <motion.span
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="block"
+                >
+                  Automation that
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-gradient-red block"
+                >
+                  transforms
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="block"
+                >
+                  your business.
+                </motion.span>
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-xl text-ink-muted leading-relaxed max-w-2xl"
+              >
                 We build intelligent automation systems that eliminate repetitive work, streamline operations, and accelerate growth.
-              </p>
+              </motion.p>
             </div>
           </Reveal>
         </div>
