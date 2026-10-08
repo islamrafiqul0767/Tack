@@ -7,29 +7,29 @@ const steps = [
     number: '01',
     icon: IconSearch,
     title: 'Discover',
-    description: 'We deep-dive into your business to understand your existing workflows, pain points, and biggest bottlenecks. We identify exactly where automation will have the most impact.',
-    details: ['Stakeholder interviews', 'Workflow mapping', 'Bottleneck identification', 'ROI assessment'],
+    description: 'We learn how your business works today — the workflows, tools, and the repetitive tasks that take the most time. You share context about your goals and constraints.',
+    details: ['Walkthrough of current workflows', 'Identify repetitive tasks', 'Review existing tools', 'Agree on priorities'],
   },
   {
     number: '02',
     icon: IconPen,
     title: 'Design',
-    description: 'We architect the most efficient automation strategy for your business. Every workflow is designed for maximum impact with minimal complexity.',
-    details: ['Solution architecture', 'Integration planning', 'Technology selection', 'Implementation roadmap'],
+    description: 'We map out an automation approach that fits your tools and team. You review the proposed workflow and approve it before any build work starts.',
+    details: ['Workflow design', 'Integration plan', 'Tool selection', 'Written scope and proposal'],
   },
   {
     number: '03',
     icon: IconCode,
     title: 'Build',
-    description: 'We develop and integrate the automation system into your existing tools and processes. Every component is tested rigorously before deployment.',
-    details: ['System development', 'API integrations', 'Quality assurance', 'Team training'],
+    description: 'We build the automation and connect it to your existing tools. We test each step with you and train your team before going live.',
+    details: ['Build and integrate', 'Test with your data', 'Team walkthrough', 'Handover documentation'],
   },
   {
     number: '04',
     icon: IconChart,
-    title: 'Optimize',
-    description: 'We monitor performance, gather feedback, and continuously improve the system. Automation is not set-and-forget — it evolves with your business.',
-    details: ['Performance monitoring', 'Feedback loops', 'Continuous improvement', 'Scaling support'],
+    title: 'Support',
+    description: 'After launch, we stay available to fix issues, adjust the workflow, and extend the system as your business changes. Ongoing support is scoped separately.',
+    details: ['Post-launch check-in', 'Issue resolution', 'Workflow adjustments', 'Optional retainer'],
   },
 ];
 
@@ -41,12 +41,12 @@ export default function Process() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Our Process</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                A proven path to <span className="text-gradient-red">automation</span>.
+              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">How we work</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+                A clear path from <span className="text-gradient-red">idea to automation</span>.
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
-                Our methodology ensures every project delivers measurable results — from initial discovery to continuous optimization.
+              <p className="text-lg text-ink-muted leading-relaxed">
+                Every engagement follows the same four stages. You're involved at each step, and nothing moves forward without your approval.
               </p>
             </div>
           </Reveal>

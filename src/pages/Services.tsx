@@ -8,57 +8,57 @@ const services = [
     icon: IconBrain,
     title: 'AI Automation',
     slug: 'ai-automation',
-    description: 'Intelligent systems that automate business decisions and repetitive tasks using advanced AI models.',
-    features: ['AI-powered decision making', 'Natural language processing', 'Intelligent data classification', 'Predictive analytics', 'Automated content generation'],
+    description: 'Use AI to handle classification, extraction, drafting, and other repetitive cognitive tasks — with human review where it matters.',
+    features: ['Text classification and routing', 'Data extraction from documents', 'Draft generation with review', 'Decision support for repetitive choices'],
   },
   {
     icon: IconWorkflow,
     title: 'Workflow Automation',
     slug: 'workflow-automation',
-    description: 'Connect your tools and automate processes from start to finish with seamless integrations.',
-    features: ['Multi-tool integration', 'Trigger-based automation', 'Conditional logic flows', 'Error handling & retries', 'Real-time monitoring'],
+    description: 'Connect the tools you already use so work moves between them without manual copy-paste or status chasing.',
+    features: ['Connect CRMs, email, calendars, and more', 'Trigger-based flows', 'Conditional logic and branching', 'Logging and error handling'],
   },
   {
     icon: IconCRM,
     title: 'CRM Automation',
     slug: 'crm-automation',
-    description: 'Automatically manage leads, customers, follow-ups and pipelines without manual data entry.',
-    features: ['Auto lead assignment', 'Pipeline management', 'Contact synchronization', 'Deal stage automation', 'Activity tracking'],
+    description: 'Keep your CRM accurate and up to date by automating data entry, stage updates, and follow-up tasks.',
+    features: ['Automatic field updates', 'Pipeline stage tracking', 'Follow-up task creation', 'Activity logging'],
   },
   {
     icon: IconTarget,
     title: 'Lead Automation',
     slug: 'lead-automation',
-    description: 'Capture, organize, qualify and distribute leads automatically across your sales team.',
-    features: ['Multi-channel capture', 'AI lead scoring', 'Auto-routing rules', 'Instant notifications', 'Duplicate detection'],
+    description: 'Capture leads from your forms and channels, route them to the right person, and start follow-up without delay.',
+    features: ['Capture from forms and channels', 'Routing rules by team or region', 'Instant internal notifications', 'Duplicate handling'],
   },
   {
     icon: IconChat,
     title: 'Customer Support',
     slug: 'customer-support',
-    description: 'AI chatbots and automated customer-response systems that handle inquiries 24/7.',
-    features: ['AI-powered chatbots', 'Ticket auto-routing', 'Knowledge base integration', 'Sentiment analysis', 'Multi-language support'],
+    description: 'Handle common questions with automated responses and route complex cases to your team with full context.',
+    features: ['Auto-reply to common questions', 'Ticket routing to the right agent', 'Context passed with every handoff', 'Escalation rules you define'],
   },
   {
     icon: IconCalendar,
     title: 'Appointment Automation',
     slug: 'appointment-automation',
-    description: 'Automate bookings, reminders, confirmations and follow-ups for any scheduling need.',
-    features: ['Online booking system', 'Automated reminders', 'Calendar synchronization', 'No-show reduction', 'Rescheduling automation'],
+    description: 'Let clients book time that works for them, with automatic reminders and rescheduling built in.',
+    features: ['Self-serve booking page', 'Automated confirmations and reminders', 'Calendar sync across your team', 'Reschedule and cancel flows'],
   },
   {
     icon: IconMail,
     title: 'Email & Messaging',
     slug: 'email-messaging',
-    description: 'Automated communication across email and messaging platforms with personalization.',
-    features: ['Drip campaigns', 'Personalized sequences', 'Multi-channel messaging', 'A/B testing', 'Performance analytics'],
+    description: 'Send the right message at the right time across email and chat — based on what the customer did or didn\'t do.',
+    features: ['Triggered email sequences', 'Personalization from your data', 'Multi-channel delivery', 'Opt-out and preference handling'],
   },
   {
     icon: IconSettings,
     title: 'Custom Business Systems',
     slug: 'custom-systems',
-    description: 'Build automation specifically around your unique business processes and requirements.',
-    features: ['Custom workflow design', 'Bespoke integrations', 'Industry-specific solutions', 'Scalable architecture', 'Ongoing optimization'],
+    description: 'When off-the-shelf tools don\'t fit, we design automation around the way your business actually works.',
+    features: ['Workflow designed around your process', 'Integrations with your existing tools', 'Documentation and training', 'Iterative improvement after launch'],
   },
 ];
 
@@ -93,14 +93,14 @@ export default function Services() {
                 <span className="text-xs font-semibold text-brand uppercase tracking-wider">Our Services</span>
               </motion.div>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-ink mb-6 leading-[0.9]">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-ink mb-6 leading-[0.95]">
                 <motion.span
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="block"
                 >
-                  Automation that
+                  What we can
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: 50 }}
@@ -108,7 +108,7 @@ export default function Services() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-gradient-red block"
                 >
-                  transforms
+                  automate
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: 50 }}
@@ -116,7 +116,7 @@ export default function Services() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="block"
                 >
-                  your business.
+                  for you.
                 </motion.span>
               </h1>
               
@@ -124,9 +124,9 @@ export default function Services() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-xl text-ink-muted leading-relaxed max-w-2xl"
+                className="text-lg text-ink-muted leading-relaxed max-w-2xl"
               >
-                We build intelligent automation systems that eliminate repetitive work, streamline operations, and accelerate growth.
+                Each engagement is scoped to your workflows and tools. Below are the areas we most often work in — the final system is always designed around your business.
               </motion.p>
             </div>
           </Reveal>

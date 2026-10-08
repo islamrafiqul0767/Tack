@@ -12,7 +12,12 @@ const caseStudies = [
     solution: 'Built an automated lead pipeline that captures leads from all channels, qualifies them using AI scoring, assigns them to the right team member, and triggers personalized follow-up sequences automatically.',
     workflow: ['Form Submission', 'AI Lead Scoring', 'CRM Assignment', 'Email Sequence', 'Slack Notification', 'Dashboard Update'],
     tech: ['Make.com', 'OpenAI GPT-4', 'HubSpot', 'Slack', 'SendGrid'],
-    results: ['95% faster lead response time', 'Zero manual data entry', '3x increase in qualified leads', 'Automated follow-ups 24/7'],
+    outcomes: [
+      'Manual data entry removed from the lead workflow',
+      'Follow-up sequences triggered automatically',
+      'Team notified instantly when new leads arrive',
+      'Lead status visible in a shared dashboard',
+    ],
   },
   {
     id: 2,
@@ -22,17 +27,27 @@ const caseStudies = [
     solution: 'Implemented an AI-powered booking system with automated reminders, confirmations, and rescheduling. Integrated with calendar and CRM for seamless management across the team.',
     workflow: ['Booking Request', 'AI Confirmation', 'Calendar Sync', 'SMS Reminder', 'Follow-up Sequence', 'Feedback Collection'],
     tech: ['Cal.com', 'Twilio', 'Zapier', 'Airtable', 'GPT-4'],
-    results: ['80% reduction in no-shows', '100% automated scheduling', '4 hours saved per agent daily', 'Improved client satisfaction'],
+    outcomes: [
+      'Appointments scheduled without manual coordination',
+      'Automated reminders sent before each viewing',
+      'Calendar and CRM kept in sync automatically',
+      'Agents spend less time on admin and more time with clients',
+    ],
   },
   {
     id: 3,
     title: 'Agency Client Onboarding',
     category: 'Agency',
-    problem: 'Client onboarding took 2+ weeks of manual work — sending contracts, collecting information, setting up accounts, and coordinating with multiple teams.',
-    solution: 'Created an end-to-end automated onboarding system that triggers the entire workflow from contract signing to project kickoff — reducing onboarding time from weeks to hours.',
+    problem: 'Client onboarding took weeks of manual work — sending contracts, collecting information, setting up accounts, and coordinating with multiple teams.',
+    solution: 'Created an end-to-end automated onboarding system that triggers the entire workflow from contract signing to project kickoff.',
     workflow: ['Contract Signed', 'Account Creation', 'Welcome Email', 'Team Brief', 'Project Setup', 'Client Portal Access'],
     tech: ['n8n', 'Notion', 'Stripe', 'Slack', 'Google Workspace'],
-    results: ['Onboarding reduced from 2 weeks to 24 hours', 'Zero manual coordination', 'Consistent client experience', 'Team can handle 5x more clients'],
+    outcomes: [
+      'Onboarding steps triggered automatically after contract signing',
+      'Internal teams briefed without manual handoff',
+      'Client receives a consistent welcome experience',
+      'Project workspace prepared before kickoff',
+    ],
   },
 ];
 
@@ -46,14 +61,14 @@ export default function Work() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Our Work</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                Real results. <span className="text-gradient-red">Real automation.</span>
+              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">Example Work</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+                Example automation <span className="text-gradient-red">workflows.</span>
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
-                Explore how we've transformed business processes through intelligent automation.
+              <p className="text-lg text-ink-muted leading-relaxed">
+                The following are illustrative examples of the types of automation systems we design. They show how a business problem can be turned into an end-to-end workflow.
               </p>
-              <p className="text-sm text-ink-faint mt-4 italic">* Demo / Concept Projects</p>
+              <p className="text-sm text-ink-faint mt-4 italic">These are concept projects, not client engagements.</p>
             </div>
           </Reveal>
         </div>
@@ -122,14 +137,14 @@ export default function Work() {
                   </div>
                 </div>
 
-                {/* Results */}
+                {/* Outcomes */}
                 <div className="mb-10">
-                  <h3 className="text-sm font-bold text-ink uppercase tracking-wider mb-4">Results</h3>
+                  <h3 className="text-sm font-bold text-ink uppercase tracking-wider mb-4">Outcomes</h3>
                   <div className="grid sm:grid-cols-2 gap-3">
-                    {caseStudies[activeCase].results.map((result, i) => (
-                      <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-brand-50 border border-brand-100">
-                        <IconCheck width={18} height={18} className="text-brand flex-shrink-0" />
-                        <span className="text-sm font-medium text-ink">{result}</span>
+                    {caseStudies[activeCase].outcomes.map((outcome, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-brand-50 border border-brand-100">
+                        <IconCheck width={18} height={18} className="text-brand flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-ink">{outcome}</span>
                       </div>
                     ))}
                   </div>

@@ -11,12 +11,12 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">About Us</span>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6">
-                We build the <span className="text-gradient-red">future</span> of work.
+              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">About VECTRAL</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+                Automation designed around <span className="text-gradient-red">how you work</span>.
               </h1>
-              <p className="text-xl text-ink-muted leading-relaxed">
-                VECTRAL is an AI automation agency that helps businesses eliminate repetitive work and focus on what matters most — growth.
+              <p className="text-lg text-ink-muted leading-relaxed">
+                VECTRAL is an AI automation studio. We help businesses identify repetitive work and replace it with systems that fit their tools, team, and goals.
               </p>
             </div>
           </Reveal>
@@ -75,8 +75,8 @@ export default function About() {
                 <div className="w-16 h-16 rounded-xl bg-brand-50 flex items-center justify-center mx-auto mb-5">
                   <IconZap width={32} height={32} className="text-brand" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-ink mb-3">Speed</h3>
-                <p className="text-ink-muted leading-relaxed">We move fast without sacrificing quality. Your automation should be live in weeks, not months.</p>
+                <h3 className="text-xl font-display font-bold text-ink mb-3">Clarity</h3>
+                <p className="text-ink-muted leading-relaxed">We scope work in plain language. You always know what's being built, why, and what it will cost before we start.</p>
               </div>
             </StaggerItem>
 
@@ -85,8 +85,8 @@ export default function About() {
                 <div className="w-16 h-16 rounded-xl bg-brand-50 flex items-center justify-center mx-auto mb-5">
                   <IconShield width={32} height={32} className="text-brand" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-ink mb-3">Reliability</h3>
-                <p className="text-ink-muted leading-relaxed">Our systems are built to last. We engineer for stability, security, and consistent performance.</p>
+                <h3 className="text-xl font-display font-bold text-ink mb-3">Care</h3>
+                <p className="text-ink-muted leading-relaxed">We treat your business like our own. Every workflow is reviewed with your team, and nothing ships without your sign-off.</p>
               </div>
             </StaggerItem>
 
@@ -95,8 +95,8 @@ export default function About() {
                 <div className="w-16 h-16 rounded-xl bg-brand-50 flex items-center justify-center mx-auto mb-5">
                   <IconBrain width={32} height={32} className="text-brand" />
                 </div>
-                <h3 className="text-xl font-display font-bold text-ink mb-3">Innovation</h3>
-                <p className="text-ink-muted leading-relaxed">We stay at the cutting edge of AI and automation, bringing the latest technology to your business.</p>
+                <h3 className="text-xl font-display font-bold text-ink mb-3">Craft</h3>
+                <p className="text-ink-muted leading-relaxed">We choose tools and patterns that fit the problem — not the trend. Simple, maintainable systems that your team can live with.</p>
               </div>
             </StaggerItem>
           </StaggerContainer>

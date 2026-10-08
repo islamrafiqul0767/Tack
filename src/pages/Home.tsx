@@ -134,7 +134,7 @@ export default function Home() {
             <h1 className="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-display font-bold leading-[0.9] tracking-tight mb-8">
               <AnimatedText text="Automate" className="text-white" />
               <br />
-              <AnimatedText text="Your Business." className="text-white" delay={0.3} />
+              <AnimatedText text="Repetitive Work." className="text-white" delay={0.3} />
               <br />
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
@@ -142,7 +142,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="text-gradient-red"
               >
-                Grow Faster.
+                Focus on Growth.
               </motion.span>
             </h1>
 
@@ -151,9 +151,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="text-lg sm:text-xl text-white/70 max-w-xl mb-10 leading-relaxed"
+              className="text-lg sm:text-xl text-white/80 max-w-xl mb-10 leading-relaxed"
             >
-              We design AI-powered automation systems that eliminate repetitive work, streamline operations, and give businesses more time to focus on growth.
+              We design AI-powered automation systems for businesses that want to eliminate manual tasks, streamline operations, and free their teams to focus on growth.
             </motion.p>
 
             {/* CTAs */}
@@ -208,31 +208,19 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
+      {/* Value Proposition Section */}
       <section className="py-20 border-b border-border bg-white">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            {[
-              { number: '200+', label: 'Automations Built' },
-              { number: '50+', label: 'Businesses Served' },
-              { number: '10M+', label: 'Tasks Automated' },
-              { number: '99.9%', label: 'System Uptime' },
-            ].map((stat, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="text-center">
-                  <motion.p
-                    className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-gradient-red mb-2"
-                    whileInView={{ scale: [0.8, 1.05, 1] }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.1 }}
-                  >
-                    {stat.number}
-                  </motion.p>
-                  <p className="text-sm text-ink-muted font-medium">{stat.label}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <Reveal>
+            <div className="text-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-ink mb-6 leading-tight">
+                We help businesses <span className="text-gradient-red">eliminate repetitive work</span> through intelligent automation.
+              </h2>
+              <p className="text-lg text-ink-muted leading-relaxed max-w-3xl mx-auto">
+                From lead management to customer support, we design AI-powered systems that streamline your operations and give your team time to focus on what matters most.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -279,8 +267,8 @@ export default function Home() {
                       <IconZap width={24} height={24} className="text-brand" />
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-ink">10x</p>
-                      <p className="text-xs text-ink-muted">Faster Processing</p>
+                      <p className="text-lg font-display font-bold text-ink">AI-Powered</p>
+                      <p className="text-xs text-ink-muted">Automation Systems</p>
                     </div>
                   </div>
                 </motion.div>
@@ -331,7 +319,7 @@ export default function Home() {
                   <IconShield width={32} height={32} className="text-brand group-hover:text-white transition-colors" />
                 </motion.div>
                 <h3 className="text-2xl font-display font-bold text-ink mb-3">Reduce Errors</h3>
-                <p className="text-ink-muted leading-relaxed">Create consistent, reliable automated workflows that never miss a step and maintain perfect accuracy.</p>
+                <p className="text-ink-muted leading-relaxed">Replace error-prone manual steps with consistent workflows that follow the same rules every time.</p>
               </motion.div>
             </StaggerItem>
 
@@ -500,11 +488,12 @@ export default function Home() {
           <Reveal delay={0.2}>
             <div className="space-y-4">
               {[
-                { q: 'What kind of business processes can you automate?', a: 'We can automate virtually any repetitive business process — from lead management and customer onboarding to data entry, email sequences, appointment scheduling, reporting, and more.' },
-                { q: 'Do I need to replace my existing software?', a: 'No. Our automation systems integrate with your existing tools — CRMs, email platforms, calendars, and more.' },
-                { q: 'How long does an automation project take?', a: 'Simple workflows take 1-2 weeks, comprehensive systems take 4-8 weeks. We provide clear timelines during discovery.' },
-                { q: 'Can you build custom AI workflows?', a: 'Absolutely. We design custom AI-powered workflows with AI agents, NLP, and intelligent data processing.' },
-                { q: 'Do you provide maintenance after launch?', a: 'Yes. We offer ongoing maintenance, monitoring, updates, and continuous improvement.' },
+                { q: 'What types of business processes can be automated?', a: 'Many repetitive processes are good candidates — lead management, customer onboarding, data entry between tools, email sequences, appointment scheduling, and reporting. During discovery we map your workflows and identify the best opportunities.' },
+                { q: 'Do I need to replace my existing software?', a: 'Not necessarily. Our approach is to integrate with the tools you already use where possible. We assess your existing stack before recommending any changes.' },
+                { q: 'How do you scope and price a project?', a: 'Every project starts with a discovery conversation to understand your workflows and goals. After that we provide a scoped proposal with deliverables, timeline, and pricing before any work begins.' },
+                { q: 'Can you build custom AI workflows?', a: 'Yes. We design custom workflows that may include AI components such as classification, extraction, or decision support. We discuss the right approach for each use case and review outputs with you.' },
+                { q: 'What happens after launch?', a: 'We hand over documentation and training for your team. Ongoing support, monitoring, and iteration can be arranged as a separate engagement based on your needs.' },
+                { q: 'How do you handle data privacy and security?', a: 'We follow standard security practices and discuss data handling, access, and storage requirements during discovery. Specific policies depend on the tools and integrations involved.' },
               ].map((faq, i) => (
                 <motion.details
                   key={i}
