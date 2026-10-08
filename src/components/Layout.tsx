@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Logo, Wordmark, IconMenu, IconX, IconArrowRight } from './Icons';
+import { Logo, Wordmark } from './Logo';
+import { IconMenu, IconX, IconArrowRight } from './Icons';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -33,11 +34,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="grain-overlay">
       {/* Navigation */}
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-white/90 backdrop-blur-xl border-b border-border' : 'bg-transparent'
+          isScrolled ? 'bg-white/95 backdrop-blur-xl border-b border-border shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8">

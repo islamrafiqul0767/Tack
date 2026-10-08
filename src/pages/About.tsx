@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import PageTransition, { Reveal, StaggerContainer, StaggerItem } from '../components/PageTransition';
-import { Logo, IconArrowRight, IconZap, IconShield, IconRocket, IconBrain } from '../components/Icons';
+import { Logo } from '../components/Logo';
+import { IconArrowRight, IconZap, IconShield, IconRocket, IconBrain } from '../components/Icons';
 
 export default function About() {
   return (
