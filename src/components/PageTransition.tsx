@@ -1,28 +1,31 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
+// Premium easing curves
+const easeOutExpo = [0.16, 1, 0.3, 1];
+
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 30,
-    filter: 'blur(4px)',
+    y: 20,
+    filter: 'blur(8px)',
   },
   animate: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
     transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.8,
+      ease: easeOutExpo,
     },
   },
   exit: {
     opacity: 0,
-    y: -20,
+    y: -10,
     filter: 'blur(4px)',
     transition: {
-      duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.4,
+      ease: [0.4, 0, 1, 1],
     },
   },
 };
@@ -46,7 +49,8 @@ export function StaggerContainer({ children, className = '' }: { children: React
     <motion.div
       className={className}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
       variants={{
         hidden: {},
         visible: {
@@ -66,11 +70,12 @@ export function StaggerItem({ children, className = '' }: { children: ReactNode;
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+          filter: 'blur(0px)',
+          transition: { duration: 0.7, ease: easeOutExpo },
         },
       }}
     >
@@ -79,15 +84,15 @@ export function StaggerItem({ children, className = '' }: { children: ReactNode;
   );
 }
 
-// Reveal on scroll
+// Reveal on scroll with premium blur effect
 export function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.9, delay, ease: easeOutExpo }}
     >
       {children}
     </motion.div>

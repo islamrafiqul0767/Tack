@@ -41,9 +41,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-xl border-b border-border shadow-sm' : 'bg-transparent'
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          isScrolled ? 'bg-white/90 backdrop-blur-2xl border-b border-border/60 shadow-[0_1px_40px_rgba(0,0,0,0.04)]' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -148,14 +148,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <main id="main-content" className="min-h-screen" tabIndex={-1}>{children}</main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-surface">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+      <footer className="border-t border-border bg-surface relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.015]" style={{
+          backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <Link to="/" className="flex items-center gap-2.5 mb-4">
+              <Link to="/" className="flex items-center gap-2.5 mb-4 group">
                 <Logo size={24} />
-                <Wordmark className="text-ink text-base" />
+                <Wordmark className="text-ink text-base group-hover:text-brand transition-colors duration-300" />
               </Link>
               <p className="text-sm text-ink-muted max-w-xs leading-relaxed">
                 AI-powered automation systems that eliminate repetitive work and accelerate growth.
