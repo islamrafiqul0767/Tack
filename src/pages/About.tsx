@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import PageTransition, { Reveal, StaggerContainer, StaggerItem } from '../components/PageTransition';
 import { Logo } from '../components/Logo';
 import { IconArrowRight, IconZap, IconShield, IconRocket, IconBrain } from '../components/Icons';
@@ -7,15 +8,22 @@ export default function About() {
   return (
     <PageTransition>
       {/* Header */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-brand uppercase tracking-wider mb-3 block">About VECTRAL</span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-ink mb-6 leading-tight">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 60 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="h-[3px] bg-brand mb-6 rounded-full"
+              />
+              <span className="text-sm font-semibold text-brand uppercase tracking-[0.2em] mb-4 block">About VECTRAL</span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6 leading-[0.95] tracking-[-0.02em]">
                 Automation designed around <span className="text-gradient-red">how you work</span>.
               </h1>
-              <p className="text-lg text-ink-muted leading-relaxed">
+              <p className="text-lg text-ink-muted leading-relaxed max-w-2xl">
                 VECTRAL is an AI automation studio. We help businesses identify repetitive work and replace it with systems that fit their tools, team, and goals.
               </p>
             </div>

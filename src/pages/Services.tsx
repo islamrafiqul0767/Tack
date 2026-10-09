@@ -66,54 +66,55 @@ export default function Services() {
   return (
     <PageTransition>
       {/* Header */}
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 opacity-5">
+      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        {/* Background image with premium overlay */}
+        <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=90&auto=format&fit=crop"
             alt=""
             className="w-full h-full object-cover"
+            loading="eager"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
           <Reveal>
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-6"
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-50 border border-brand-100 mb-8"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-2 h-2 rounded-full bg-brand"
-                />
-                <span className="text-xs font-semibold text-brand uppercase tracking-wider">Our Services</span>
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
+                </span>
+                <span className="text-xs font-semibold text-brand uppercase tracking-[0.2em]">Our Services</span>
               </motion.div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-ink mb-6 leading-[0.95]">
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-ink mb-8 leading-[0.92] tracking-[-0.03em]">
                 <motion.span
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   className="block"
                 >
                   What we can
                 </motion.span>
                 <motion.span
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className="text-gradient-red block"
                 >
                   automate
                 </motion.span>
                 <motion.span
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
+                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="block"
                 >
                   for you.
@@ -123,8 +124,8 @@ export default function Services() {
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-lg text-ink-muted leading-relaxed max-w-2xl"
+                transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="text-lg sm:text-xl text-ink-muted leading-relaxed max-w-2xl"
               >
                 Each engagement is scoped to your workflows and tools. Below are the areas we most often work in — the final system is always designed around your business.
               </motion.p>
