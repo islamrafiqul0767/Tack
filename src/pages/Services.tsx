@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import PageTransition, { Reveal, StaggerContainer, StaggerItem } from '../components/PageTransition';
 import { IconBrain, IconWorkflow, IconCRM, IconTarget, IconChat, IconCalendar, IconMail, IconSettings, IconArrowRight, IconCheck } from '../components/Icons';
 
+const easeOutExpo = [0.16, 1, 0.3, 1];
+
 const services = [
   {
     icon: IconBrain,
@@ -65,86 +67,105 @@ const services = [
 export default function Services() {
   return (
     <PageTransition>
-      {/* Header */}
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
-        {/* Background image with premium overlay */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=90&auto=format&fit=crop"
-            alt=""
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white" />
-        </div>
+      {/* Hero - Hostinger style */}
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+        {/* Subtle background */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }} />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[150px]" />
         
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
-          <Reveal>
-            <div className="max-w-4xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-50 border border-brand-100 mb-8"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
-                </span>
-                <span className="text-xs font-semibold text-brand uppercase tracking-[0.2em]">Our Services</span>
-              </motion.div>
-              
-              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-ink mb-8 leading-[0.92] tracking-[-0.03em]">
-                <motion.span
-                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block"
-                >
-                  What we can
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-gradient-red block"
-                >
-                  automate
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="block"
-                >
-                  for you.
-                </motion.span>
-              </h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: easeOutExpo as any }}
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-50 border border-brand-100 mb-8"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
+              </span>
+              <span className="text-xs font-semibold text-brand uppercase tracking-[0.2em]">Our Services</span>
+            </motion.div>
+            
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-ink mb-6 leading-[0.95] tracking-[-0.03em]">
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="text-lg sm:text-xl text-ink-muted leading-relaxed max-w-2xl"
+                transition={{ duration: 0.8, delay: 0.15, ease: easeOutExpo as any }}
+                className="block"
               >
-                Each engagement is scoped to your workflows and tools. Below are the areas we most often work in — the final system is always designed around your business.
-              </motion.p>
-            </div>
-          </Reveal>
+                What we can
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25, ease: easeOutExpo as any }}
+                className="text-gradient-red block"
+              >
+                automate
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.35, ease: easeOutExpo as any }}
+                className="block"
+              >
+                for you.
+              </motion.span>
+            </h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: easeOutExpo as any }}
+              className="text-lg sm:text-xl text-ink-muted leading-relaxed max-w-2xl mb-10"
+            >
+              Each engagement is scoped to your workflows and tools. Below are the areas we most often work in — the final system is always designed around your business.
+            </motion.p>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap items-center gap-6 text-sm text-ink-muted"
+            >
+              <div className="flex items-center gap-2">
+                <IconCheck width={16} height={16} className="text-brand" />
+                <span>Free consultation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <IconCheck width={16} height={16} className="text-brand" />
+                <span>Custom solutions</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <IconCheck width={16} height={16} className="text-brand" />
+                <span>Ongoing support</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Grid - Hostinger style */}
       <section className="pb-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <StaggerContainer className="grid md:grid-cols-2 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 gap-6">
             {services.map((service, i) => (
               <StaggerItem key={i}>
-                <div className="group p-8 rounded-2xl bg-white border border-border card-lift hover:border-brand/30 transition-all duration-300">
+                <div className="group p-8 rounded-2xl bg-white border border-border hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 h-full">
                   <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 group-hover:bg-brand group-hover:text-white transition-all duration-300">
-                      <service.icon width={28} height={28} className="text-brand group-hover:text-white transition-colors" />
-                    </div>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 group-hover:bg-brand transition-all duration-300"
+                    >
+                      <service.icon width={28} height={28} className="text-brand group-hover:text-white transition-colors duration-300" />
+                    </motion.div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-display font-bold text-ink mb-3 group-hover:text-brand transition-colors">
                         {service.title}
@@ -154,8 +175,8 @@ export default function Services() {
                       </p>
                       <ul className="space-y-2">
                         {service.features.map((feature, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm text-ink-muted">
-                            <IconCheck width={16} height={16} className="text-brand flex-shrink-0" />
+                          <li key={j} className="flex items-start gap-2 text-sm text-ink-muted">
+                            <IconCheck width={16} height={16} className="text-brand flex-shrink-0 mt-0.5" />
                             {feature}
                           </li>
                         ))}
@@ -170,21 +191,21 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 lg:py-32 bg-surface">
+      <section className="py-24 lg:py-32 bg-ink text-white">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
           <Reveal>
-            <h2 className="text-4xl sm:text-5xl font-display font-bold text-ink mb-6">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6 tracking-tight">
               Ready to get started?
             </h2>
-            <p className="text-xl text-ink-muted mb-10">
+            <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
               Let's discuss how we can automate your business processes.
             </p>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full text-base font-semibold hover:bg-brand-dark transition-all duration-300 shadow-lg shadow-brand/20"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-brand text-white rounded-full text-lg font-semibold hover:bg-brand-light transition-all duration-300"
             >
               Book a Free Consultation
-              <IconArrowRight width={18} height={18} className="group-hover:translate-x-1 transition-transform" />
+              <IconArrowRight width={20} height={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </Reveal>
         </div>
